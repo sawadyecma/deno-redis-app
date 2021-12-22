@@ -1,19 +1,10 @@
-import { Status } from "https://deno.land/std@0.118.0/http/http_status.ts";
+import { Application } from "https://deno.land/x/oak/mod.ts";
 
-console.log("http://localhost:8000/");
-const server = Deno.listen({port:8000})
+const app = new Application();
 
-for await (const conn of server) {
-    // ...handle the connection...
-    (async () => {
-        handle(conn)
-    })();
-}
+app.use((ctx) => {
+    ctx.response.body = "Hello World!";
+});
 
 
-async function handle(conn: Deno.Conn) {
-    const httpConn = Deno.serveHttp(conn);
-    for await (const requestEvent of httpConn) {
-        await requestEvent.respondWith(new Response("hello\n", {status: Status.OK}))
-    }
-}
+await app.listen({ port: 8000 });
