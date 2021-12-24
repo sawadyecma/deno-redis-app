@@ -1,8 +1,11 @@
 import { Router } from "https://deno.land/x/oak/mod.ts";
+import { getHttpSample } from "./apiClient.ts";
 
 export const router = new Router();
-router.get('/users', (ctx) => {
+router.get('/users', async(ctx) => {
     ctx.response.body = 'Received a GET HTTP method';
+    const resp = await getHttpSample()
+    ctx.response.body = resp.body
 });
 
 router.post('/users', (ctx) => {
