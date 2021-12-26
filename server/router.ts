@@ -1,4 +1,4 @@
-import { Router } from "https://deno.land/x/oak/mod.ts";
+import { Router } from "./deps.ts";
 import { getHttpSample } from "./apiClient.ts";
 
 export const router = new Router();
