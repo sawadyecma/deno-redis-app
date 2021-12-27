@@ -1,1 +1,0 @@
-docker exec -it redis-container bash
