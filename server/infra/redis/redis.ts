@@ -1,4 +1,4 @@
-import { connect, Redis } from "https://deno.land/x/redis/mod.ts";
+import { connect, Redis } from "../../deps.ts";
 
 export async function getRedisConn():Promise<Redis>{
     return connect({

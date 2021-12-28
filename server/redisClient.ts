@@ -1,4 +1,4 @@
-import { Redis, RedisValue, Bulk } from "https://deno.land/x/redis/mod.ts";
+import { Bulk, Redis, RedisValue } from "./deps.ts";
 
 export class RedisClient {
     public async set(redis: Redis, key: string, value: RedisValue){
