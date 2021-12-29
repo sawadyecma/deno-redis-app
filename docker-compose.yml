@@ -12,23 +12,92 @@ services:
     ports:
       - 8000:8000
 
-  redis-writer:
-    container_name: redis-writer
+  redis-wn-1:
+    container_name: redis-wn-1
     image: redis:latest
-    ports:
-      - 6379:6379
     volumes:
-      - redis-writer-data:/data
+      - ./redis/01:/etc/redis
+      - redis-wn-1-data:/data
+    networks:
+      - redis-cluster
+    command: /etc/redis/redis.conf
+
+  redis-wn-2:
+    container_name: redis-wn-2
+    image: redis:latest
+    volumes:
+      - ./redis/02:/etc/redis
+      - redis-wn-2-data:/data
+    networks:
+      - redis-cluster
+    command: /etc/redis/redis.conf
+
+  redis-wn-3:
+    container_name: redis-wn-3
+    image: redis:latest
+    volumes:
+      - ./redis/03:/etc/redis
+      - redis-wn-3-data:/data
+    networks:
+      - redis-cluster
+    command: /etc/redis/redis.conf
+
+  redis-rn-1:
+    container_name: redis-rn-1
+    image: redis:latest
+    volumes:
+      - ./redis/01:/etc/redis
+      - redis-rn-1-data:/data
+    networks:
+      - redis-cluster
+    command: /etc/redis/redis.conf
+
+  redis-rn-2:
+    container_name: redis-rn-2
+    image: redis:latest
+    volumes:
+      - ./redis/02:/etc/redis
+      - redis-rn-2-data:/data
+    networks:
+      - redis-cluster
+    command: /etc/redis/redis.conf
+
+  redis-rn-3:
+    container_name: redis-rn-3
+    image: redis:latest
+    volumes:
+      - ./redis/03:/etc/redis
+      - redis-rn-3-data:/data
+    networks:
+      - redis-cluster
+    command: /etc/redis/redis.conf
+
+  # redis-writer:
+  #   container_name: redis-writer
+  #   image: redis:latest
+  #   ports:
+  #     - 6379:6379
+  #   volumes:
+  #     - redis-writer-data:/data
   
-  redis-reader:
-    container_name: redis-reader
-    image: redis:latest
-    ports:
-      - 6380:6379
-    volumes:
-      - redis-reader-data:/data
-    command: redis-server --slaveof redis-writer 6379
+  # redis-reader:
+  #   container_name: redis-reader
+  #   image: redis:latest
+  #   ports:
+  #     - 6380:6379
+  #   volumes:
+  #     - redis-reader-data:/data
+  #   command: redis-server --slaveof redis-writer 6379
 
 volumes:
-  redis-writer-data:
-  redis-reader-data:
+  # redis-writer-data:
+  # redis-reader-data:
+  redis-wn-1-data:
+  redis-wn-2-data:
+  redis-wn-3-data:
+  redis-rn-1-data:
+  redis-rn-2-data:
+  redis-rn-3-data:
+
+networks:
+  redis-cluster:
