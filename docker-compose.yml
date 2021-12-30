@@ -4,13 +4,15 @@ services:
 
   server:
     container_name: deno-container
-    image: denoland/deno
+    build: .
     volumes:
       - ./server:/src
     working_dir: /src
-    command: deno run --allow-net server.ts
+    command: denon run --allow-net server.ts
     ports:
       - 8000:8000
+    networks:
+      - redis-cluster
 
   redis-wn-1:
     container_name: redis-wn-1

@@ -4,6 +4,11 @@ import { getRedisConn } from "./infra/redis/redis.ts";
 import { RedisClient } from "./redisClient.ts";
 
 export const router = new Router();
+
+router.get("/", (ctx)=>{
+    ctx.response.body = "deno-redis-app";
+})
+
 router.get('/users', async(ctx) => {
     const resp = await getHttpSample()
     ctx.response.body = resp.body
