@@ -12,11 +12,11 @@ router.get("/", (ctx)=>{
 router.get('/users', async(ctx) => {
     const resp = await getHttpSample()
     ctx.response.body = resp.body
-
     const redisConn = await getRedisConn()
     const redisClient = new RedisClient()
-    const value = await redisClient.get(redisConn, "test");
-    console.log("return value:", value)
+
+    const key = "key01"
+    const value = await redisClient.get(redisConn, key);
 
     ctx.response.body = JSON.stringify({
         title: 'Received a GET HTTP method',
@@ -29,7 +29,8 @@ router.post('/users', async(ctx) => {
 
     const redisConn = await getRedisConn()
     const redisClient = new RedisClient()
-    await redisClient.set(redisConn, "test", "asdfghjkl;");
+    const key = "key04"
+    await redisClient.set(redisConn, key, "value04");
 });
 
 router.put('/users/:userId', (ctx) => {
