@@ -15,7 +15,7 @@ router.get('/users', async(ctx) => {
     const redisConn = await getRedisConn()
     const redisClient = new RedisClient()
 
-    const key = "key01"
+    const key = "key02"
     const value = await redisClient.get(redisConn, key);
 
     ctx.response.body = JSON.stringify({

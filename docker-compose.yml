@@ -8,7 +8,9 @@ services:
     volumes:
       - ./server:/src
     working_dir: /src
-    command: denon run --allow-net server.ts
+    command: denon run --allow-net --allow-env server.ts
+    env_file:
+      - ./server/.env
     ports:
       - 8000:8000
     networks:

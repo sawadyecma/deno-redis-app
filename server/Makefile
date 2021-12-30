@@ -2,7 +2,7 @@ server:
 	deno run --allow-net server.ts
 
 server/dev:
-	denon run --allow-net server.ts
+	denon run --allow-net --allow-env server.ts
 
 container/build:
 	docker build . -t deno-server

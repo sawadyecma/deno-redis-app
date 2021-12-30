@@ -16,6 +16,13 @@ deno install -qAf --unstable https://raw.githubusercontent.com/nnmrts/denon/patc
 
 ※folkしたリポジトリなので注意
 
+# 環境変数
+
+```
+cp .env.sample .env
+```
+
+
 # Run Server
 
 ```

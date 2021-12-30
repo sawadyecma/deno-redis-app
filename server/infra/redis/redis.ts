@@ -1,11 +1,12 @@
-import { Redis, connect } from "../../deps.ts";
+import { redisHost, redisPort } from "../../config.ts";
+import { Redis, connect  } from "../../deps.ts";
 
 export async function getRedisConn():Promise<Redis>{
     return await connect({
         nodes: [
             {
-                hostname: "redis-wn-1",
-                port: 6379,
+                hostname: redisHost,
+                port: redisPort,
             },
         ],
     });
