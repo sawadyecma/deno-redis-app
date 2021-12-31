@@ -6,7 +6,7 @@ import { RedisClient } from "./redisClient.ts";
 export const router = new Router();
 
 router.get("/", (ctx)=>{
-    ctx.response.body = "deno-redis-app";
+    ctx.response.body = "\ndeno-redis-app !\n";
 })
 
 router.get('/users', async(ctx) => {

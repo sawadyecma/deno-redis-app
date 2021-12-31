@@ -2,7 +2,7 @@ server:
 	deno run --allow-net server.ts
 
 server/dev:
-	denon run --allow-net --allow-env server.ts
+	SERVER_PORT=4000 deno run --allow-net --allow-env --watch=./ server.ts
 
 container/build:
 	docker build . -t deno-server
